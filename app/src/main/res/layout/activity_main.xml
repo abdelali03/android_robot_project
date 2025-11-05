@@ -2,74 +2,153 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/mytextview"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" android:layout_width="match_parent">
+    tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/info_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!-- === Kamera-Vorschau als Hintergrund === -->
+    <!-- Kamera-Vorschau als Hintergrund -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="105dp"
-        android:text="Hello World!" />
-
-    <Button
-        android:id="@+id/button_connect"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="141dp"
-        android:onClick="onClickConnect"
-        android:text="connect" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="147dp"
-        android:layout_marginTop="218dp"
-        android:onClick="onClickRunForward"
-        android:text="moveforward" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginBottom="306dp"
-        android:onClick="onClickRunLinks"
-        android:text="links" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="313dp"
-        android:onClick="OnclickRunRechts"
-        android:text="rechts" />
+        app:implementationMode="performance"
+        app:scaleType="fillCenter" />
 
-    <Button
-        android:id="@+id/button5"
+
+    <!-- === Overlay-Elemente über der Kamera === -->
+
+    <TextView
+        android:id="@+id/infotext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="83dp"
+        android:layout_alignParentEnd="true"
+        android:text="Hello World!"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
+
+    <TextView
+        android:id="@+id/infotext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infotext"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="83dp"
+        android:text="Speed 2500"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
+
+    <SeekBar
+        android:id="@+id/speed_seekbar"
+        android:layout_width="275dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="240dp"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="#D40000"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="132dp"
-        android:layout_marginBottom="221dp"
-        android:onClick="onClickRunBack"
-        android:text="movebackwards" />
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/Connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="#03A9F4"
+        android:onClick="onClickConnect"
+        android:text="Connect"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/Forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="345dp"
+        android:backgroundTint="#F43636"
+        android:onClick="onClickForward"
+        android:text="Forward"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/Left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginBottom="355dp"
+        android:backgroundTint="#F43636"
+        android:onClick="onClickLeft"
+        android:text="Left"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:id="@+id/Right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="353dp"
+        android:backgroundTint="#F43636"
+        android:onClick="onClickRight"
+        android:text="Right"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:id="@+id/Backward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginBottom="313dp"
+        android:backgroundTint="#F43636"
+        android:onClick="onClickBackward"
+        android:text="Backward"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true" />
+
+    <FrameLayout
+        android:id="@+id/joystick_container"
+        android:layout_width="214dp"
+        android:layout_height="214dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginBottom="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/joystick_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:src="@drawable/ic_joystick_knob" />
+
+        <ImageView
+            android:id="@+id/joystick_knob"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_joystick_knob" />
+    </FrameLayout>
 
 </RelativeLayout>
