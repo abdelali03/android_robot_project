@@ -50,5 +50,4 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(project(":opencv"))
 
-
 }

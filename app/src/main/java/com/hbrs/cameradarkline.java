@@ -230,33 +230,49 @@ public class cameradarkline extends AppCompatActivity {
         }
 
         private void controlRobot(boolean L, boolean M, boolean R) {
-
             int speed = ORBManager.getCurrentSpeed();
 
-            // --- Regeln ---
+            // Verringere diesen Wert (z.B. auf 150), falls er immer noch zu nervös ist.
+            int turnIntensity = 250;
+
             if (M && !L && !R) {
-                Log.w("ROBOT", "FORWARD");
-                ORBManager.speed(ORBManager.getCurrentSpeed(), ORBManager.getCurrentSpeed());
+                // Auf der Linie -> Geradeaus
+                Log.i("ROBOT", "GERADEAUS");
+                ORBManager.speed(speed, speed);
             }
-            else if (L && !M) {
-                Log.w("ROBOT", "HARD LEFT");
-                ORBManager.speed(-ORBManager.getCurrentSpeed(), ORBManager.getCurrentSpeed());
+            else if (L && !M && !R) {
+                // Linie links erkannt -> Lenke nach RECHTS (Umgedreht)
+                Log.i("ROBOT", "KORREKTUR RECHTS (L erkannt)");
+                ORBManager.speed(speed + turnIntensity, speed - turnIntensity);
             }
-            else if (R && !M) {
-                Log.w("ROBOT", "HARD RIGHT");
-                ORBManager.speed(ORBManager.getCurrentSpeed(), -ORBManager.getCurrentSpeed());
+            else if (R && !M && !R) {
+                // Linie rechts erkannt -> Lenke nach LINKS (Umgedreht)
+                Log.i("ROBOT", "KORREKTUR LINKS (R erkannt)");
+                ORBManager.speed(speed - turnIntensity, speed + turnIntensity);
+            }
+            else if (L && M) {
+                // Linie zwischen Mitte und Links -> Sanft nach RECHTS (Umgedreht)
+                Log.i("ROBOT", "SANFT RECHTS");
+                ORBManager.speed(speed + (turnIntensity / 2), speed - (turnIntensity / 2));
+            }
+            else if (R && M) {
+                // Linie zwischen Mitte und Rechts -> Sanft nach LINKS (Umgedreht)
+                Log.i("ROBOT", "SANFT LINKS");
+                ORBManager.speed(speed - (turnIntensity / 2), speed + (turnIntensity / 2));
             }
             else if (!L && !M && !R) {
-                Log.w("ROBOT", "NO LINE → STOP");
+                Log.w("ROBOT", "STOPP");
                 ORBManager.speed(0, 0);
             }
             else {
-                // z.B. L + M = leichte Linkskurve
-                Log.w("ROBOT", "SOFT TURN");
-                int diff = 500;
-
-                if (L) ORBManager.speed(speed - diff, speed + diff);
-                else   ORBManager.speed(speed + diff, speed - diff);
+                // Starkes Gegenlenken (Umgedreht)
+                if (L) {
+                    // L erkannt -> Stark Rechts
+                    ORBManager.speed(speed + 400, speed - 400);
+                } else {
+                    // R erkannt -> Stark Links
+                    ORBManager.speed(speed - 400, speed + 400);
+                }
             }
         }
     }

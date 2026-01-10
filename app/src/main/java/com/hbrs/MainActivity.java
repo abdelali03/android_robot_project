@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int range = 2000;
                 currentSpeed = 1500 + (int) (((float) progress / seekBar.getMax()) * range);
+                ORBManager.currentSpeed=currentSpeed;
                 text2.setText("Speed: " + currentSpeed);
                 Log.i("Test", "Speedbar moved");
             }
@@ -71,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     // === Navigation button handler ===
-    public void onClickOpenCamera(View view) {
+    public void onClickOpenCameraBlack(View view) {
         Intent intent = new Intent(this, cameradarkline.class);
         startActivity(intent);
     }
-    public void onClickOpenCameraDark(View view) {
+    public void onClickOpenCamera(View view) {
 
         Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);

@@ -7,32 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- === New button to open the camera activity === -->
     <Button
-        android:id="@+id/button_follow_line"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="273dp"
-        android:backgroundTint="#03A9F4"
-        android:onClick="onClickOpenCamera"
-        android:text="follow the dark line" />
-
-    <Button
-        android:id="@+id/button_open_camera"
+        android:id="@+id/button_open_camera_red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="follow the red object"
-        android:onClick="onClickOpenCameraDark"
+        android:text="Follow Red Object"
+        android:onClick="onClickOpenCamera"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#03A9F4" />
+        android:layout_marginEnd="0dp"
+        android:backgroundTint="#F43636" />
+    <Button
+        android:id="@+id/button_open_camera_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow Black Line"
+        android:onClick="onClickOpenCameraBlack"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="250dp"
+        android:backgroundTint="#23282b" />
 
-    <!-- Rest of your UI stays unchanged -->
+
     <TextView
         android:id="@+id/infotext"
         android:layout_width="wrap_content"
@@ -41,9 +39,13 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="83dp"
         android:layout_alignParentEnd="true"
-        android:text="Hello World!"
+        android:text="Programm Orb A"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
 
     <TextView
         android:id="@+id/infotext2"
@@ -55,7 +57,11 @@
         android:layout_marginEnd="83dp"
         android:text="Speed 2500"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
 
     <SeekBar
         android:id="@+id/speed_seekbar"
@@ -87,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"
         android:layout_marginTop="345dp"
-        android:backgroundTint="#F43636"
+        android:backgroundTint="#d3d3d3"
         android:onClick="onClickForward"
         android:text="Forward"
         android:layout_alignParentStart="true"
@@ -99,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"
         android:layout_marginBottom="355dp"
-        android:backgroundTint="#F43636"
+        android:backgroundTint="#d3d3d3"
         android:onClick="onClickLeft"
         android:text="Left"
         android:layout_alignParentStart="true"
@@ -111,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="41dp"
         android:layout_marginBottom="353dp"
-        android:backgroundTint="#F43636"
+        android:backgroundTint="#d3d3d3"
         android:onClick="onClickRight"
         android:text="Right"
         android:layout_alignParentEnd="true"
@@ -123,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="151dp"
         android:layout_marginBottom="313dp"
-        android:backgroundTint="#F43636"
+        android:backgroundTint="#d3d3d3"
         android:onClick="onClickBackward"
         android:text="Backward"
         android:layout_alignParentStart="true"
