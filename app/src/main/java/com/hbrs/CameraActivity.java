@@ -133,9 +133,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 Scalar lowBlue  = new Scalar(110, 180, 100);
                 Scalar highBlue = new Scalar(130, 255, 255);
-                /*
-                Scalar lowBlue  = new Scalar(0, 0, 0);
-                Scalar highBlue = new Scalar(180, 100, 80);*/
+
                 Core.inRange(hsv, lowBlue, highBlue, mask);
 
                 Imgproc.morphologyEx(mask, mask, Imgproc.MORPH_OPEN, kernel);
